@@ -1,53 +1,52 @@
-/* Google Fonts Quicksandを採用した例 */
-/* 全体のフォント設定とグラデーション背景 */
-body {
-  font-family: "Quicksand", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  /* グラデーション背景 */
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-/* カード風のコンテナ */
 .contact-container {
-  background-color: #ffffffcc; /* 半透明白 */
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  padding: 40px 30px;
+  max-width: 600px; /* フォームの最大幅 */
   width: 90%;
-  max-width: 500px;
+  margin: auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s;
-}
-.contact-container:hover {
-  transform: translateY(-3px);
 }
 
-.contact-container h1 {
-  margin-bottom: 24px;
-  font-weight: 600;
+/* 見出しのスタイル */
+.contact-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
   color: #333;
 }
 
-/* フォーム周り */
+/* 姓名入力欄を横並びにする */
+.name-group {
+  display: flex;
+  gap: 0px;
+  width: 100%; /* フォーム幅に応じて伸縮 */
+  margin-bottom: 20px;
+}
+
+/* 姓名それぞれの .form-group を均等幅にする */
+.name-group .form-group {
+  flex: 1;
+  min-width: 0; /* 不要な余白を削除 */
+}
+
+/* 各入力欄のスタイル */
 .form-group {
   margin-bottom: 20px;
   text-align: left;
 }
+
 .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
   color: #333;
 }
+
 .form-group input,
 .form-group textarea {
   width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   border: 1.5px solid #ddd;
   border-radius: 8px;
@@ -55,6 +54,7 @@ body {
   font-family: inherit;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
+
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
@@ -62,11 +62,19 @@ body {
   box-shadow: 0 0 0 3px rgba(125, 141, 241, 0.2);
 }
 
-/* 送信ボタン */
+/* 内容 (textarea) のサイズ固定 */
+#contact_message {
+  height: 150px; /* 初期高さを固定 */
+  min-height: 150px; /* 最小高さを設定 */
+  resize: vertical; /* ユーザーが縦方向にはサイズ変更可能 */
+}
+
+/* 送信ボタンを黒色に変更 */
 .form-group button {
   width: 100%;
+  max-width: 300px; /* ボタンの最大幅を設定 */
   padding: 14px;
-  background-color: #7d8df1;
+  background-color: #000; /* 黒色 */
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -74,9 +82,12 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  margin: 0 auto;
+  display: block;
 }
+
 .form-group button:hover {
-  background-color: #6d7ae6;
+  background-color: #333; /* ホバー時の色を少し明るく */
 }
 .form-group button:active {
   transform: scale(0.98);
@@ -91,16 +102,24 @@ body {
 
 /* レスポンシブ対応 */
 @media screen and (max-width: 480px) {
-  .contact-container {
-    padding: 30px 20px;
+  .name-group {
+    flex-direction: row; /* モバイルでも横並び */
+    gap: 10px;
   }
+
+  .contact-container {
+    padding: 20px;
+  }
+
   .form-group label {
     font-size: 14px;
   }
+
   .form-group input,
   .form-group textarea {
     font-size: 13px;
   }
+
   .form-group button {
     font-size: 14px;
   }
